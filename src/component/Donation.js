@@ -14,7 +14,8 @@ const Donation = () => {
   const [recognition, setRecognition] = useState('');
   const [anonymous, setAnonymous] = useState('');
   const [amount, setAmount] = useState('');
-  const [error, setError] = useState(false);
+  
+  const submitReview = () => {
 
     axios.post("http://localhost:5000/api/insert", {
       firstname: firstname,
@@ -31,46 +32,46 @@ const Donation = () => {
     }).then(() => {
       alert("Succesfully Submitted");
     });
-
   }
+  
 
   return (
     <div class="form">
       <body>
-        <form onSubmit={handlesubmit}>
+        <form>
           <h1>Donate</h1><br></br> <br></br>
-          <label>How much would you like to Donate</label> <br></br>
+          <label>How much would you like to Donate</label> <br></br><br />
 
           <input type="text" Class="textbox" name="amount" placeholder="Amount Rs. " onChange={(e) => {
             setAmount(e.target.value);
-            <label>Amount Rs.</label>
+           
           }}
 
           /><br /><br />
 
-            <label>Who is the Donor</label> <br></br>
+            <label>Who is the Donor</label> <br></br><br />
             <input type="text" class="textbox" placeholder="First name" name="Firstname"
               onChange={(e) => {
                 setFirstname(e.target.value)  
             }
             }
-            /><br />
+            /><br /><br />
           <input type="text" class="textbox" placeholder="Last name" name="Lastname" onChange={(e) => {
             setLastname(e.target.value);
 
-          }} /><br />
+          }} /><br /><br />
           <input type="text" class="textbox" placeholder="Email address" name="Email" onChange={(e) => {
             setEmail(e.target.value);
-          }} /><br />
+          }} /><br /><br />
           <input type="text" class="textbox" placeholder="Phone number" name="Tpnum" onChange={(e) => {
             setTpnum(e.target.value);
-          }} />  <br />
+          }} />  <br /><br />
           <input type="text" class="textbox" placeholder="Address" name="Address" onChange={(e) => {
             setAddress(e.target.value);
-          }} />  <br />
+          }} />  <br /><br />
           <input type="text" class="textbox" placeholder="Zip/Postal code" name="Zipcode" onChange={(e) => {
             setZipcode(e.target.value);
-          }} />  <br />
+          }} />  <br /><br />
           <input type="text" class="textbox" placeholder="Country" name="Country" onChange={(e) => {
             setCountry(e.target.value);
           }} />  <br /><br />
@@ -87,11 +88,11 @@ const Donation = () => {
 
 
 
-          <button>Submit</button>
+          <button onClick={submitReview}>Submit</button>
         </form>
       </body>
     </div>
   )
-
+        }
 
 export default Donation

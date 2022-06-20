@@ -1,4 +1,22 @@
 
+
+
+button{
+    margin: 20px;
+    
+}
+
+label{
+    margin-left: 25px;
+}
+
+input,select,button{
+    margin-left: 40px;
+}
+
+input,select,button,label{
+    font-size: large;
+}
 h1 {
     text-align: center;
 }
