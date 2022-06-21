@@ -12,7 +12,7 @@ const Donation = () => {
   const [zipcode, setZipcode] = useState("");
   const [country, setCountry] = useState("");
   const [recognition, setRecognition] = useState(false);
-  const [anonymous, setAnonymous] = useState("YES");
+  const [anonymous, setAnonymous] = useState(true);
   const [amount, setAmount] = useState("");
   // const [error, setError] = useState(false);
   const [validated, setValidated] = useState(false);
@@ -20,7 +20,7 @@ const Donation = () => {
   const saveUser = async (userDetails) => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/insert/`,
+        `http://localhost:3300/api/create/`,
         { Donation: userDetails },
       );
       if (res.data.created) {
@@ -54,19 +54,18 @@ const Donation = () => {
     setValidated(true);
 
     const formData = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      mobileNumber: mobileNumber,
-      address: address,
-      zipcode: zipcode,
-      country: country,
+      Firstname: firstName,
+      Lastname: lastName,
+      Email: email,
+      MobileNumber: mobileNumber,
+      Address: address,
+      Zipcode: zipcode,
+      Country: country,
       recognition: recognition,
-      amount: amount,
-      anonymous: anonymous,
+      Amount: amount,
+      Anonymous: anonymous,
     };
-    console.log(formData);
-    // saveUser(formData);
+    saveUser(formData);
   };
 
   return (
@@ -185,13 +184,13 @@ const Donation = () => {
           <Form.Group as={Col} md="6">
             <Form.Label>Is this an anonymous gift?</Form.Label>
             <Form.Select
-              value={anonymous}
+              value={anonymous ? "YES": "NO" }
               onChange={(event) => {
                 handleAnonymous(event.target.value);
               }}
             >
-              <option value="YES">YES</option>
-              <option value="NO">NO</option>
+              <option value={true}>YES</option>
+              <option value={false}>NO</option>
             </Form.Select>
           </Form.Group>
         </Row>
